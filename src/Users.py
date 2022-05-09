@@ -87,9 +87,15 @@ if __name__ == "__main__":
                     if "+" not in personalNumber:
                         print("The international dialing prefix was not included in the personal number. If you are based in the U.S, this means your phone number should start with +1")
                         continue
+                    elif "-" in personalNumber:
+                        print("Enter the phone number without any dashes")
+                        continue
                     twilioNumber = input("enter your given twilio number: ").strip()
                     if "+" not in twilioNumber:
                         print("The international dialing prefix was not included in the twilio number. Copy down the twilio number exactly as given to you from Twilio.com")
+                        continue
+                    elif "-" in twilioNumber:
+                        print("Enter the phone number wihtout any dashes")
                         continue
                     break
 
