@@ -1,7 +1,7 @@
 import sqlite3
 import sys
 
-connection = sqlite3.connect("userinfo.db")
+connection = sqlite3.connect("../database/userinfo.db")
 cursor = connection.cursor()
 
 # returns a list of every user registered in the program
@@ -81,27 +81,31 @@ if __name__ == "__main__":
                                 (sid text, auth text, personalNumber text, twilioNumber text)""")
 
                 sid = input("enter the sid: ").strip()
+                if sid.upper() == "EXIT":
+                    sys.exit()
                 auth = input("enter the auth: ").strip()
+                if auth.upper() == "EXIT":
+                    sys.exit()
                 while True:
                     personalNumber = input("enter your personal number: ").strip()
-                    if "+" not in personalNumber:
+                    if personalNumber.upper() == "EXIT":
+                        sys.exit()
+                    elif "+" not in personalNumber:
                         print("The international dialing prefix was not included in the personal number. If you are based in the U.S, this means your phone number should start with +1")
                         continue
                     elif "-" in personalNumber:
                         print("Enter the phone number without any dashes")
                         continue
                     twilioNumber = input("enter your given twilio number: ").strip()
-                    if "+" not in twilioNumber:
+                    if twilioNumber.upper() == "EXIT":
+                        sys.exit()
+                    elif "+" not in twilioNumber:
                         print("The international dialing prefix was not included in the twilio number. Copy down the twilio number exactly as given to you from Twilio.com")
                         continue
                     elif "-" in twilioNumber:
-                        print("Enter the phone number wihtout any dashes")
+                        print("Enter the phone number without any dashes")
                         continue
                     break
-
-                if "exit" in [sid.lower(), auth.lower(), personalNumber.lower(), twilioNumber.lower()]:
-                    print("Keyword 'Exit' detected in user information. Aborting the program...")
-                    sys.exit()
 
                 INSERT_QUERY = f"""INSERT INTO {user}
                                 (sid, auth, personalNumber, twilioNumber) 
