@@ -23,7 +23,7 @@ def getUserData(userSelection):
 def printUsers(message):
     userList = getUserList()
     if len(userList) == 0:
-        print("There are no users registered to delete")
+        print("There are no users registered")
         return "No users"
     print(message)
     for user in userList:
@@ -114,7 +114,9 @@ if __name__ == "__main__":
                 break
 
             elif choice == "2":
-                if printUsers("Which user would you like to view?") == "No users": break
+                if printUsers("Which user would you like to view?") == "No users":
+                    firstUse = False
+                    break
                 while True:
                     if getInput(printUserInfo) == "break": break
                 connection.commit()
@@ -122,7 +124,9 @@ if __name__ == "__main__":
                 break
 
             elif choice == "3":
-                if printUsers("Which user would you like to remove?\nUsers Registered:") == "No users": break
+                if printUsers("Which user would you like to remove?\nUsers Registered:") == "No users":
+                    firstUse = False
+                    break
                 while True:
                     if getInput(removeUser) == "break": break
                 connection.commit()
