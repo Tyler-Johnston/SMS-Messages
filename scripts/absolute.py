@@ -1,6 +1,6 @@
-import os
+from os import path
 
-absolute_path = os.path.abspath("../src/main.py")
+absolute_path = path.abspath("../src/main.py")
 
 with open("api.sh", "r") as file:
     data = file.read()
