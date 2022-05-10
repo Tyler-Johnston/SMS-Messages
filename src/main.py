@@ -17,6 +17,10 @@ elif sys.argv[2].lower() not in messageType:
 elif len(sys.argv) == 3:
     usage("Missing message body")
     sys.exit()
+elif len(sys.argv) == 5:
+    mediaMessage = sys.argv[4]
+else:
+    mediaMessage = ""
 
 s = SendMessages(sys.argv[1])
 if sys.argv[2].lower() == "-c":
@@ -28,4 +32,4 @@ elif sys.argv[2].lower() == "-f2":
 elif sys.argv[2].lower() == "-f3":
     s.textFileFirstLineAndSwap(sys.argv[3])
 elif sys.argv[2].lower() == "-m":
-    s.textMedia(sys.argv[3])
+    s.textMedia(sys.argv[3], mediaMessage)
