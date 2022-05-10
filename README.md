@@ -51,33 +51,29 @@ Visit [crontab.guru](https://crontab.guru/#) for help creating crontab schedulin
 
 While you can send custom messages or images using this command directly from your personal computer, the beauty of this project comes with creating scripts and combining it with different APIs. If you set this up with crontabs or some other scheduler, you will be able to send/receive custom messages using any of the thousands of free APIs available online.
 
-The scripts subdirectory serves as a proof-of-concept of this idea. It includes the following scripts:
-1. insult.sh
-2. api.sh
+The scripts subdirectory contains the script "api.sh". You can use this to send text messages using any compatible API found online. For example, you can use this script to send the word of the day, quotes, insults, etc., as long as there is an API that provides this information for you.
 
-Before you can run either of these programs, you will need to run the following commands:
+Before you can run this, however, you will need to run the following commands:
 
-1. chmod +x {script}
+1. chmod +x api.sh
 
-    This will make a script executable. You will need to do this for insult.sh and api.sh the first time you use it. After that, however, you won't need to run this command again.
+    This will make the script executable.
 
 2. absolute.py
 
-    Each script requires it to be linked with the absolute path of main.py. Instead of having you find the absolute path of main.py yourself and editing each of these files manually, this program will fill in the details for you.
+    The script requires it to be linked with the absolute path of main.py. Instead of having you find the absolute path of main.py yourself and editing each of these files manually, this program will fill in the details for you.
 
     If you ever mess up the absolute path and you wish to run the program again, you will need to edit the file, replace the corrupted absolute path with "absolute_path_to_main.py", and run absolute.py again.
 
-The first script, insult.sh, will send a random insult using an insult API. The syntax of this script is as follows:
-
-    ./insult.sh {user}
-
-The second script, api.sh, is more general and can be used with any plain-text API. The syntax of this is as follows:
+The syntax of api.sh is as follows:
 
     ./api.sh {user} {-flag} {"link to the API call"}
 
-For example, api.sh can be used in exactly the same way as insult.sh if you included the same insult API as the link to the API call. This would look like the following:
+For example, api.sh can be used to send an insult. The syntax of this looks like the following (using an insult API):
 
     ./api.sh tom -c "https://insult.mattbas.org/api/insult"
+
+Add your own scripts to this subdirectory too!
 
 ## Trouble Shooting
 
