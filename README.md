@@ -10,15 +10,17 @@ For example, if you are based in the US, you will need to enter +1 at the start 
 ## Usage
 The syntax to run this program is:
 
-    python main.py {name} {flag} {"message"}
+    python main.py {name} {-flag} {"message"}
     
 Lets break down what "name", "flag", and "message" means.
 - Name: The name of the user you registered in Users.py.
-- Flag: One of three options: c, f, or m. 
-    - C: Custom Text Message. Use this flag when you wish to only send a custom message directly from the command line
-    - F: Text File Message. Use this flag when you wish to send the contents of a text file. Make sure to provide a relative
+- Flag: Each flag serves a unique purpose when sending messages.
+    - -C: Custom Text Message. Use this flag when you wish to only send a custom message directly from the command line
+    - -F1 (or simply -F): Text File Message (1). Use this flag when you wish to send the entire contents of a text file. Make sure to provide a relative
     path in the message body when choosing this flag.
-    - M: Media File Message. Use this flag when you wish to send an image you found on the internet. Make sure to provide a link
+    - -F2: Text File Message (2). Use this when you wish to send the first line of a text file and delete it from the text file after it is sent. Perfect if each line is only needed once.
+    - -F3: Text File Message (3). Use this when you wish to send the first line of a text file and place its position at the very end of the text file. Perfect if you wish to cycle through content.
+    - -M: Media File Message. Use this flag when you wish to send an image you found on the internet. Make sure to provide a link
     to the source in the message body when choosing this flag.
 - Message: the content you are sending to the user. The information provided here depends on the chosen flag
     - For "C": the message is the content that you are sending to the user
@@ -27,15 +29,15 @@ Lets break down what "name", "flag", and "message" means.
 
 For example, if you wanted to send the custom message "hello world!" to a user registered as "Tom", you would run the following command:
 
-    python main.py tom c "hello world"
+    python main.py tom -c "hello world"
 
 If you had a text file called "recipe.txt", you would write down its relative path as the "message body". Sending the contents of a text file may look like the following:
 
-    python main.py tom f "../recipe.txt"
+    python main.py tom -f "../recipe.txt"
 
 Lastly, if you wanted to send an image of a cat, you could run the following:
 
-    python main.py tom m "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg"
+    python main.py tom -m "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg"
 
 ## Scheduling Messages with Crontabs (Linux/MacOS)
 
@@ -71,11 +73,11 @@ The first script, insult.sh, will send a random insult using an insult API. The 
 
 The second script, api.sh, is more general and can be used with any plain-text API. The syntax of this is as follows:
 
-    ./api.sh {user} {flag} {"link to the API call"}
+    ./api.sh {user} {-flag} {"link to the API call"}
 
 For example, api.sh can be used in exactly the same way as insult.sh if you included the same insult API as the link to the API call. This would look like the following:
 
-    ./api.sh tom c "https://insult.mattbas.org/api/insult"
+    ./api.sh tom -c "https://insult.mattbas.org/api/insult"
 
 ## Trouble Shooting
 
