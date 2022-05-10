@@ -1,7 +1,9 @@
 import sqlite3
 import sys
+from os import path
 
-connection = sqlite3.connect("../database/userinfo.db")
+ROOT = path.dirname(path.realpath((__file__)))
+connection = sqlite3.connect(path.join(ROOT, "../database/userinfo.db"))
 cursor = connection.cursor()
 
 # returns a list of every user registered in the program
