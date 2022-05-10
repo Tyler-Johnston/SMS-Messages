@@ -21,13 +21,13 @@ Lets break down what "name", "flag", and "message" means.
     - -F2: Text File Message (2). Use this when you wish to send the first line of a text file and delete it from the text file after it is sent. Perfect if each line is only needed once.
     - -F3: Text File Message (3). Use this when you wish to send the first line of a text file and place its position at the very end of the text file. Perfect if you wish to cycle through content.
     - -M: Media File Message. Use this flag when you wish to send an image you found on the internet. Make sure to provide a link
-    to the source in the message body when choosing this flag.
+    to the source in the message body when choosing this flag. If you want to include a message to go along with the image, add the message afterword the image link.
 - Message: the content you are sending to the user. The information provided here depends on the chosen flag
     - For "C": the message is the content that you are sending to the user
     - For "F": the message is the relative path to the text file you are trying to send the contents of.
-    - For "M": the message is the link of the image you found online.
+    - For "M": the message is the link of the image you found online. To add an additional text message to go along the image, add the text in quotes after this link.
 
-For example, if you wanted to send the custom message "hello world!" to a user registered as "Tom", you would run the following command:
+For example, if you wanted to send the custom message "hello world" to a user registered as "Tom", you would run the following command:
 
     python main.py tom -c "hello world"
 
@@ -38,6 +38,10 @@ If you had a text file called "recipe.txt", you would write down its relative pa
 Lastly, if you wanted to send an image of a cat, you could run the following:
 
     python main.py tom -m "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg"
+
+If you want to include a message along with your image, add the message after the image link:
+
+    python main.py tom -m "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg" "this is a cool cat"
 
 ## Scheduling Messages with Crontabs (Linux/MacOS)
 
