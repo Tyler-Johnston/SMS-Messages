@@ -5,7 +5,8 @@ from os import path, remove
 ROOT = path.dirname(path.realpath((__file__)))
 connection = sqlite3.connect(path.join(ROOT, "../database/userinfo.db"))
 cursor = connection.cursor()
-remove("../database/database.txt")
+if ("database.txt" in "../database"):
+    remove("../database/database.txt")
 
 # returns a list of every user registered in the program
 def getUserList():
